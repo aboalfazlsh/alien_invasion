@@ -14,7 +14,7 @@ class Ship():
 
         # store a decimal value for the ships center.
         self.center = float(self.rect.centerx)
-        self.bottm= float(self.rect.bottom)
+        # self.bottm= float(self.rect.bottom)
 
         #Start each new ship  at the bottom center of the screen
         self.rect.centerx = self.screen_rect.centerx
@@ -24,26 +24,26 @@ class Ship():
         #Movement Flag
         self.moving_right = False
         self.moving_left = False
-        self.moving_up = False
-        self.moving_down = False
+        # self.moving_up = False
+        # self.moving_down = False
 
     def update(self):
         """ update the ships position based on the movement flag"""
         #update the ships center value , not the rect
-        if self.moving_right:
+        if self.moving_right and self.rect.right < self.screen_rect.right:
             #self.rect.centerx += 1
             self.center += self.ai_settings.ship_speed_factor
-        elif self.moving_left:
+        elif self.moving_left and self.rect.left > 0:
             # self.rect.centerx -= 1
             self.center -= self.ai_settings.ship_speed_factor
-        elif self.moving_up:
-            self.bottm -= self.ai_settings.ship_speed_factor
-        elif self.moving_down:
-            self.bottm += self.ai_settings.ship_speed_factor
+        # elif self.moving_up:
+        #     self.bottm -= self.ai_settings.ship_speed_factor
+        # elif self.moving_down:
+        #     self.bottm += self.ai_settings.ship_speed_factor
 
         #update rect object form self.center.
         self.rect.centerx=self.center
-        self.rect.bottom=self.bottm
+        # self.rect.bottom=self.bottm
 
     def blitme(self):
         """Draw the ship at its current location."""
